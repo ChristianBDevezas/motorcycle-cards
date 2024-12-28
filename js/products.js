@@ -15,16 +15,17 @@ body.appendChild(main);
 // body.appendChild(main);
 // body.appendChild(createCard());
 
+// get the array of selected cards
 let registeredProductList = getRegisteredProductList();
+
+const message = document.querySelector(".title h3");
+message.style.display = "none";
 
 // check if some product is selected
 if(registeredProductList.length === 0) {
     // message element
-    const message = document.querySelector(".title h3");
-    message.style.display = "none";
     message.style.display = "block";
-    message.innerHTML = "None card is selected!";
-    
+    message.innerHTML = "None card is selected!";    
     localStorage.removeItem("item_ID");
     // throw new Error("None card is selected!");
 }
@@ -120,7 +121,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if(selectIdProduct !== null) {
         const itemId = +(selectIdProduct);
-
         executeAnimation(selectProductId, itemId);
     }
 });
