@@ -1,0 +1,348 @@
+:root {
+    --color-white: white;
+    --color-orange: orange;
+    --color-black: black;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Header*/
+header {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    background-color: var(--color-orange);
+    height: 4rem;
+    border-top: 2px solid var(--color-black);
+    border-bottom: 2px solid var(--color-black);
+}
+
+/*Logo*/
+.logo {
+    position: absolute;
+    top: 2px;
+    left: 3px;
+}
+
+.logo img {
+    width: 56px;
+    height: auto;
+    border: 2px solid var(--color-white);
+    border-radius: 50%;
+}
+
+/*Navigation menu*/
+.navigation {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.navigation ul li {
+    margin-right: 1rem;
+}
+.navigation ul li:last-child {
+    margin-right: 0;
+}
+
+.navigation ul li a {
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    font-size: .975rem;
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    transition: all .4s;
+}
+.navigation ul li a:hover {
+    color: var(--color-black);
+}
+
+.navigation ul li a::before,
+.navigation ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    width: 0%;
+    height: 3px;
+    background-color: var(--color-black);
+    transition: all .4s;
+}
+
+.navigation ul li a::before {
+    left: 50%;
+}
+
+.navigation ul li a::after {
+    right: 50%;
+}
+
+.navigation ul li a:hover::before,
+.navigation ul li a:hover::after {
+    width: 50%;
+}
+
+.navigation ul li a.selected {
+    color: var(--color-black);
+}
+
+/*Hamburger Menu*/
+.hamburger-menu {
+    display: none;
+}
+
+/*Container*/
+.container {
+    padding: 1.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    padding-top: 5.5rem;
+}
+
+/*Card*/
+.card__item {
+    flex-basis: 23.5%;
+    border: 3px solid var(--color-orange);
+    box-shadow: 0 0 5px var(--color-black), 0 0 0 3px var(--color-black), 0 0 0 3px var(--color-black);
+    border-radius: 5px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card__image {
+    position: relative;
+}
+
+.card__image:before {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .7);
+    z-index: 2;
+}
+
+.card__image img {
+    width: 100%;
+    height: auto;
+    min-height: 230px;
+    object-fit: cover;
+    border-bottom: 2px solid var(--color-orange);
+}
+
+.card__maker {
+    position: absolute;
+    width: 100%;
+    border-top: 1px solid var(--color-orange);
+    bottom: 0px;
+    left: 0;
+    font-size: 1rem;
+    padding: .3rem 0;
+    background: rgba(0, 0, 0, .5);
+    margin: .3rem 0;
+    text-align: center;
+}
+
+.card__model {
+    margin: .25rem 0;
+    font-size: .95rem;
+    font-weight: 500;
+}
+
+.card__link {
+    font-size: .9rem;
+    border: 1px solid var(--color-white);
+    border-radius: 3px;
+    padding: .3rem .55rem;
+    display: block;
+    margin: .3rem 0 .55rem 0;
+    background-color: var(--color-orange);
+    color: var(--color-white);
+    transition: all .4s;
+}
+.card__link:hover {
+    color: var(--color-black);
+    border: 1px solid var(--color-black);
+    box-shadow: 0 0 3px orange, 0 0 5px orange, 0 0 8px orange, 0 0 10px orange;
+}
+
+/*Products and Contact pages*/
+.title h3 {
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 0 -4.5rem 0;
+    padding-top: 5rem;
+}
+
+.card__buttons {
+    display: flex;
+    align-items: center;
+    margin: .2rem 0 .35rem 0;
+}
+
+.card__delete {
+    padding: 0rem .55rem;
+    height: 28px;
+    color: var(--color-white);
+    background-color: transparent;
+    border: 1px solid var(--color-orange);
+    cursor: pointer;
+    border-radius: 3px;
+    margin: 0 0 3px 13px;
+    transition: all .4s;
+}
+.card__delete:hover {
+    color: var(--color-orange);
+}
+
+/*JS for Product page*/
+.card__item.card-effect {
+    animation: effect1 1s;
+}
+
+@keyframes effect1 {
+    0% {
+        opacity: 0;
+        box-shadow: 0 0 5px transparent, 0 0 0 3px transparent, 0 0 0 3px transparent;
+    }
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 5px var(--color-black), 0 0 0 3px var(--color-black), 0 0 0 3px var(--color-black);
+    }
+}
+
+.image-effect.card__image:before {
+    animation: effect2 .75s .10s;
+}
+@keyframes effect2 {
+    0% {width: 100%;}
+    100% {width: 0%;}
+}
+
+.card__maker.text-effect,
+.card__model.text-effect {
+    opacity: 0;
+}
+.card__maker.text-effect {
+    animation: effect3 1.3s .7s forwards;
+}
+.card__model.text-effect {
+    animation: effect3 1s .5s forwards;
+}
+@keyframes effect3 {
+    to {opacity: 1;}
+}
+
+/*Media Queries*/
+@media(max-width: 1050px) {
+    .container {
+        flex-wrap: wrap;
+        gap: 1.2rem 1.4rem;
+    }
+
+    .card__item {
+        flex-basis: 45%;
+    }
+}
+
+@media(max-width: 768px) {
+    .logo {
+        left: 50%;
+        transform: translateX(-50%);
+     }
+
+    .navigation {
+        width: 7rem;
+        height: 6.5rem;
+        position: absolute;
+        top: 3.9rem;
+        left: -7rem;
+        background-color: var(--color-orange);
+        border: 2px solid var(--color-black);
+        border-top: 0px;
+        border-left: 0px;
+        transition: all .5s;
+    }
+    .navigation.change {
+        left: 0px;
+    }
+
+    .navigation ul {
+        flex-direction: column;
+    }
+
+    .navigation ul li {
+        margin: 0 0 .8rem .1rem;
+    }
+    .navigation ul li:last-child {
+        margin-bottom: 0px;
+    }
+
+    .navigation ul li a {
+        font-size: .95rem;
+    }
+
+    .hamburger-menu {
+        display: block;
+        position: absolute;
+        top: 23px;
+        right: 15px;
+        cursor: pointer;
+        animation: move-menu 2s infinite;
+    }
+    @keyframes move-menu {
+        0% {transform: scale(1);}
+        50% {transform: scale(1.1);}
+        100% {transform: scale(1);}
+    }
+
+    .hamburger-menu .line {
+        width: 25px;
+        height: 3px;
+        background-color: var(--color-black);
+        margin-bottom: 5px;
+        transition: all .5s;
+    }
+    .hamburger-menu .line:last-child {
+        margin-bottom: 0px;
+    }
+
+    .hamburger-menu.change .line1 {
+        transform: rotate(45deg) translate(5px, 2px);
+    }
+
+    .hamburger-menu.change .line2 {
+        opacity: 0;
+    }
+
+    .hamburger-menu.change .line3 {
+        transform: rotate(-45deg) translate(9px, -7px);
+    }
+}
+
+@media(max-width: 600px) {
+    .card__item {
+        flex-basis: 90%;
+    }
+}
